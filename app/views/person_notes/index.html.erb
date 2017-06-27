@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Person Notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Person</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @person_notes.each do |person_note| %>
+      <tr>
+        <td><%= person_note.text %></td>
+        <td><%= person_note.person %></td>
+        <td><%= link_to 'Show', person_note %></td>
+        <td><%= link_to 'Edit', edit_person_note_path(person_note) %></td>
+        <td><%= link_to 'Destroy', person_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Person note', new_person_note_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  estate_id: 
+  status_id: 
+  regno: 1
+  regdate: 2017-06-27 00:01:39
+
+two:
+  person_id: 
+  estate_id: 
+  status_id: 
+  regno: 1
+  regdate: 2017-06-27 00:01:39

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Estates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Floor</th>
+      <th>Rooms</th>
+      <th>Total area</th>
+      <th>Living area</th>
+      <th>Regnum</th>
+      <th>Estate type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @estates.each do |estate| %>
+      <tr>
+        <td><%= estate.name %></td>
+        <td><%= estate.floor %></td>
+        <td><%= estate.rooms %></td>
+        <td><%= estate.total_area %></td>
+        <td><%= estate.living_area %></td>
+        <td><%= estate.regnum %></td>
+        <td><%= estate.estate_type %></td>
+        <td><%= link_to 'Show', estate %></td>
+        <td><%= link_to 'Edit', edit_estate_path(estate) %></td>
+        <td><%= link_to 'Destroy', estate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Estate', new_estate_path %>

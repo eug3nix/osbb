@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  value: MyString
+  private: false
+  type_id: 
+
+two:
+  person_id: 
+  value: MyString
+  private: false
+  type_id: 

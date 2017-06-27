@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @estate.name %>
+</p>
+
+<p>
+  <strong>Floor:</strong>
+  <%= @estate.floor %>
+</p>
+
+<p>
+  <strong>Rooms:</strong>
+  <%= @estate.rooms %>
+</p>
+
+<p>
+  <strong>Total area:</strong>
+  <%= @estate.total_area %>
+</p>
+
+<p>
+  <strong>Living area:</strong>
+  <%= @estate.living_area %>
+</p>
+
+<p>
+  <strong>Regnum:</strong>
+  <%= @estate.regnum %>
+</p>
+
+<p>
+  <strong>Estate type:</strong>
+  <%= @estate.estate_type %>
+</p>
+
+<%= link_to 'Edit', edit_estate_path(@estate) %> |
+<%= link_to 'Back', estates_path %>

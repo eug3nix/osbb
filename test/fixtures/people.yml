@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  firstname: MyString
+  lastname: MyString
+  middlename: MyString
+  inn: 1
+  type_id: 
+  regnum: 1
+  regdate: 1
+  property_part: 1
+  birthdate: 2017-06-25
+  notifiable: false
+  move_in_date: 2017-06-25
+
+two:
+  firstname: MyString
+  lastname: MyString
+  middlename: MyString
+  inn: 1
+  type_id: 
+  regnum: 1
+  regdate: 1
+  property_part: 1
+  birthdate: 2017-06-25
+  notifiable: false
+  move_in_date: 2017-06-25
