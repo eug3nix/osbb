@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627172312) do
+ActiveRecord::Schema.define(version: 20170628152647) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 20170627172312) do
     t.string   "name",           null: false
     t.integer  "floor"
     t.integer  "rooms"
-    t.integer  "total_area"
-    t.integer  "living_area"
+    t.float    "total_area"
+    t.float    "living_area"
     t.integer  "regnum"
     t.integer  "estate_type_id"
     t.datetime "created_at",     null: false

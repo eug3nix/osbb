@@ -16,9 +16,9 @@ ActiveAdmin.register Person do
                 :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status]
 
     form do |f|
-      f.inputs "Персона" do 
-        f.input :firstname, label: 'Имя'
+      f.inputs "Персона" do
         f.input :lastname, label: 'Фамилия'
+        f.input :firstname, label: 'Имя'
         f.input :middlename, label: 'Отчество'
         f.input :inn, label: 'ИНН'
         f.input :regnum
