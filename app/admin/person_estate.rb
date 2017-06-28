@@ -14,4 +14,14 @@ ActiveAdmin.register PersonEstate do
 # end
 permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate
 
+  form do |f|
+    f.inputs "PersonEstate" do
+      f.input :estate, label: 'Объект'
+      f.input :person, label: 'Персона'
+      f.input :person_estate_status, label: 'Статус'
+      f.input :regno, label: 'Рег. Номер'
+      f.input :regdate, label: 'Дата Регистрации Права Собственности', start_year: 2015
+    end
+  end
+
 end
