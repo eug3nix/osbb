@@ -15,34 +15,37 @@ ActiveAdmin.register Person do
   permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part, :birthdate,
                 :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status]
 
-    form do |f|
-      f.inputs "Персона" do
-        f.input :lastname, label: 'Фамилия'
-        f.input :firstname, label: 'Имя'
-        f.input :middlename, label: 'Отчество'
-        f.input :inn, label: 'ИНН'
-        f.input :regnum
-        f.input :regdate, label: 'Дата Регистрации', start_year: 2010
-        f.input :birthdate, label: 'Дата Рождения', start_year: 1940
-        f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
-        f.input :notifiable, label: 'Получать уведомления'
-      end
+  menu label: "Люди"
+  index title: "Люди"
 
-      f.inputs "Объект" do
-        f.has_many :estates do |estate|
-          estate.input :name, label: "Имя Объекта"
-          estate.input :estate_type, label: "Тип"
-          estate.input :floor, label: "Этаж"
-          estate.input :rooms, label: "Комнат"
-          estate.input :total_area, label: "Общая площадь"
-          estate.input :living_area, label: "Жилая площадь"
-          estate.input :regnum, label: "Рег номер объекта недвижимости"
-
-        end
-      end
-
-      f.actions
+  form do |f|
+    f.inputs "Персона" do
+      f.input :lastname, label: 'Фамилия'
+      f.input :firstname, label: 'Имя'
+      f.input :middlename, label: 'Отчество'
+      f.input :inn, label: 'ИНН'
+      f.input :regnum
+      f.input :regdate, label: 'Дата Регистрации', start_year: 2010
+      f.input :birthdate, label: 'Дата Рождения', start_year: 1940
+      f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+      f.input :notifiable, label: 'Получать уведомления'
     end
+
+    f.inputs "Объект" do
+      f.has_many :estates do |estate|
+        estate.input :name, label: "Имя Объекта"
+        estate.input :estate_type, label: "Тип"
+        estate.input :floor, label: "Этаж"
+        estate.input :rooms, label: "Комнат"
+        estate.input :total_area, label: "Общая площадь"
+        estate.input :living_area, label: "Жилая площадь"
+        estate.input :regnum, label: "Рег номер объекта недвижимости"
+
+      end
+    end
+
+    f.actions
+  end
 
   show title: :name do
     panel "Сведения о персоне" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170628152647) do
+ActiveRecord::Schema.define(version: 20170628171217) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -111,18 +111,17 @@ ActiveRecord::Schema.define(version: 20170628152647) do
   create_table "person_estates", force: :cascade do |t|
     t.integer  "person_id"
     t.integer  "estate_id"
-    t.integer  "status_id"
     t.integer  "regno"
     t.datetime "regdate"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "person_estate_status_id"
+    t.float    "part"
   end
 
   add_index "person_estates", ["estate_id"], name: "index_person_estates_on_estate_id"
   add_index "person_estates", ["person_estate_status_id"], name: "index_person_estates_on_person_estate_status_id"
   add_index "person_estates", ["person_id"], name: "index_person_estates_on_person_id"
-  add_index "person_estates", ["status_id"], name: "index_person_estates_on_status_id"
 
   create_table "person_notes", force: :cascade do |t|
     t.string   "text"
