@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626220220) do
+ActiveRecord::Schema.define(version: 20170627172312) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -84,14 +84,9 @@ ActiveRecord::Schema.define(version: 20170626220220) do
 
   add_index "estates", ["estate_type_id"], name: "index_estates_on_estate_type_id"
 
-  create_table "estates_people", id: false, force: :cascade do |t|
-    t.integer "person_id", null: false
-    t.integer "estate_id", null: false
-  end
-
   create_table "people", force: :cascade do |t|
     t.string   "firstname",      null: false
-    t.string   "lastname"
+    t.string   "lastname",       null: false
     t.string   "middlename"
     t.integer  "inn"
     t.integer  "person_type_id"
@@ -119,11 +114,13 @@ ActiveRecord::Schema.define(version: 20170626220220) do
     t.integer  "status_id"
     t.integer  "regno"
     t.datetime "regdate"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "person_estate_status_id"
   end
 
   add_index "person_estates", ["estate_id"], name: "index_person_estates_on_estate_id"
+  add_index "person_estates", ["person_estate_status_id"], name: "index_person_estates_on_person_estate_status_id"
   add_index "person_estates", ["person_id"], name: "index_person_estates_on_person_id"
   add_index "person_estates", ["status_id"], name: "index_person_estates_on_status_id"
 
