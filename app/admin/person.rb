@@ -24,6 +24,8 @@ ActiveAdmin.register Person do
         f.input :regnum
         f.input :regdate, label: 'Дата Регистрации', start_year: 2010
         f.input :birthdate, label: 'Дата Рождения', start_year: 1940
+        f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+        f.input :notifiable, label: 'Получать уведомления'
       end
 
       f.inputs "Объект" do
