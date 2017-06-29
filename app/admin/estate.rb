@@ -13,14 +13,22 @@ ActiveAdmin.register Estate do
 #   permitted
 # end
   permit_params :name, :floor, :rooms, :total_area, :living_area, :regnum, :estate_type_id
-  menu label: "Объекты"
-  index title: "Объекты"
+  menu label: "Помещения"
+  index title: "Помещения"
 
   show title: :name do
-    panel "Сведения об объекте" do
-      attributes_table_for estate
+
+    attributes_table do
+      row ('Имя') {estate.name}
+      row ('Тип') {estate.estate_type.name}
+      row ('Этаж') {estate.floor}
+      row ('Комнат') {estate.rooms}
+      row ('Общая площадь') {estate.total_area}
+      row ('Жилая площадь') {estate.living_area}
+      row ('Гос. рег. номер объекта') {estate.living_area}
     end
-    panel "Привязки к людям" do
+
+    panel "Люди" do
       table_for(estate.person_estates) do |pes|
         column("Привязка", sortable: :id) do |pes|
           link_to "#{pes.id}", admin_person_estate_path(pes)
@@ -38,7 +46,7 @@ ActiveAdmin.register Estate do
             pes.part
         end
 
-        column "Рег. номер" do |pes|
+        column "Гос. рег. номер" do |pes|
             pes.regno
         end
 

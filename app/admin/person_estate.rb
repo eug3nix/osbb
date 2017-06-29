@@ -14,20 +14,20 @@ ActiveAdmin.register PersonEstate do
 # end
   permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part
 
-  menu label: "Привязки"
-  index title: "Привязки"
+  menu label: "Помещения-Люди"
+  index title: "Помещения-Люди"
   # show do |pes|
   #  "#{pes.person.name} - #{pes.estate.name}"
   # end
 
   form do |f|
     f.inputs "PersonEstate" do
-      f.input :estate, label: 'Объект'
-      f.input :person, label: 'Персона'
+      f.input :estate, label: 'Помещение'
+      f.input :person, label: 'Человек'
       f.input :person_estate_status, label: 'Статус'
-      f.input :part, label: 'Часть Собственности'
-      f.input :regno, label: 'Рег. Номер'
-      f.input :regdate, label: 'Дата Регистрации Права Собственности', start_year: 2015, end_year: 2020
+      f.input :part, label: 'Часть собственности'
+      f.input :regno, label: 'Гос.рег. номер'
+      f.input :regdate, label: 'Дата регистрации права собственности', start_year: 2015, end_year: 2020
     end
     f.actions
   end

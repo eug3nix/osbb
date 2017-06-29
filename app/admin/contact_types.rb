@@ -1,4 +1,4 @@
-ActiveAdmin.register EstateType do
+ActiveAdmin.register ContactType do
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -14,7 +14,7 @@ ActiveAdmin.register EstateType do
 # end
   permit_params :name
 
-  menu label: "Типы помещений"
-  index title: "Типы помещений"
+  menu label: "Типы контактов"
+  index title: "Типы контактов"
 
 end

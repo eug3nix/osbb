@@ -12,8 +12,8 @@ ActiveAdmin.register PersonEstateStatus do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-	menu label: "Типы Привязок"
-	index title: "Типы Привязок"
+	menu label: "Статусы людей"
+	index title: "Статусы людей"
   permit_params :name
 
 end
