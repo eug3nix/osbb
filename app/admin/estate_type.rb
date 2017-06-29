@@ -14,7 +14,7 @@ ActiveAdmin.register EstateType do
 # end
   permit_params :name
 
-  menu label: "Типы Объектов"
-  index title: "Типы Объектов"
+  menu label: "Типы помещений"
+  index title: "Типы помещений"
 
 end

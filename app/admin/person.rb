@@ -19,27 +19,27 @@ ActiveAdmin.register Person do
   index title: "Люди"
 
   form do |f|
-    f.inputs "Персона" do
+    f.inputs "Человек" do
       f.input :lastname, label: 'Фамилия'
       f.input :firstname, label: 'Имя'
       f.input :middlename, label: 'Отчество'
       f.input :inn, label: 'ИНН'
       f.input :regnum
-      f.input :regdate, label: 'Дата Регистрации', start_year: 2010
-      f.input :birthdate, label: 'Дата Рождения', start_year: 1940
+      f.input :regdate, label: 'Дата регистрации', start_year: 2010
+      f.input :birthdate, label: 'Дата рождения', start_year: 1940
       f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
       f.input :notifiable, label: 'Получать уведомления'
     end
 
-    f.inputs "Объект" do
+    f.inputs "Помещение" do
       f.has_many :estates do |estate|
-        estate.input :name, label: "Имя Объекта"
+        estate.input :name, label: "Имя помещения"
         estate.input :estate_type, label: "Тип"
         estate.input :floor, label: "Этаж"
-        estate.input :rooms, label: "Комнат"
+        estate.input :rooms, label: "Кол-во комнат"
         estate.input :total_area, label: "Общая площадь"
         estate.input :living_area, label: "Жилая площадь"
-        estate.input :regnum, label: "Рег номер объекта недвижимости"
+        estate.input :regnum, label: "Гос.рег номер помещения"
 
       end
     end
@@ -48,10 +48,10 @@ ActiveAdmin.register Person do
   end
 
   show title: :name do
-    panel "Сведения о персоне" do
+    panel "Сведения о человеке" do
       attributes_table_for person
     end
-    panel "Привязки к недвижимости" do
+    panel "Помещения человека" do
       table_for(person.estates) do
         column("Estate", sortable: :id) do |est|
           link_to "#{est.id}", admin_estate_path(est)
