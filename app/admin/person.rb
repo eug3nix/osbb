@@ -48,8 +48,14 @@ ActiveAdmin.register Person do
   end
 
   show title: :name do
-    panel "Сведения о человеке" do
-      attributes_table_for person
+    attributes_table do
+      row ('Фамилия') {person.lastname}
+      row ('Имя') {person.firstname}
+      row ('Отчество') {person.middlename}
+      row ('ИНН') {person.inn}
+      row ('Дата рождения') {person.birthdate}
+      row ('Дата въезда') {person.move_in_date}
+      row ('Получать уведомления') {person.notifiable}
     end
     panel "Помещения человека" do
       table_for(person.estates) do
