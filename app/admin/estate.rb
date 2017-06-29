@@ -17,12 +17,19 @@ ActiveAdmin.register Estate do
   index title: "Помещения"
 
   show title: :name do
-    panel "Сведения о помещении" do
-      attributes_table_for estate
+
+    attributes_table do
+      row ('Имя') {estate.name}
+      row ('Тип') {estate.estate_type.name}
+      row ('Этаж') {estate.floor}
+      row ('Комнат') {estate.rooms}
+      row ('Общая площадь') {estate.total_area}
+      row ('Жилая площадь') {estate.living_area}
+      row ('Гос. рег. номер объекта') {estate.living_area}
     end
+
     panel "Люди" do
       table_for(estate.person_estates) do |pes|
-	  
         column("Привязка", sortable: :id) do |pes|
           link_to "#{pes.id}", admin_person_estate_path(pes)
         end
