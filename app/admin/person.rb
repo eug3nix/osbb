@@ -13,7 +13,7 @@ ActiveAdmin.register Person do
 #   permitted
 # end
   permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part, :birthdate,
-                :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status]
+                :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status], person_estsates_attributes: [:person_estate_status]
 
   menu label: "Люди"
   index title: "Люди"
@@ -31,6 +31,14 @@ ActiveAdmin.register Person do
       f.input :notifiable, label: 'Получать уведомления'
     end
 
+    f.inputs "Люди-Помещения" do
+      f.has_many :person_estates do |pes|
+        pes.input :estate, label: "Помещение"
+        pes.input :person_estate_status, label: "Статус"
+        pes.input :part, label: "Часть собственности"
+      end
+    end
+
     f.inputs "Помещение" do
       f.has_many :estates do |estate|
         estate.input :name, label: "Имя помещения"
@@ -40,7 +48,6 @@ ActiveAdmin.register Person do
         estate.input :total_area, label: "Общая площадь"
         estate.input :living_area, label: "Жилая площадь"
         estate.input :regnum, label: "Гос.рег номер помещения"
-
       end
     end
 
