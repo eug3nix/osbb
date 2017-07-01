@@ -15,7 +15,7 @@ ActiveAdmin.register Person do
   permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part,
                 :birthdate, :move_in_date, :notifiable,
                 estates_attributes:[:name], person_estsate_attributes: [:person_estate_status],
-                person_estates_attributes: [:estate_id, :person_id, :person_estate_status_id, :part]
+                person_estates_attributes: [:id, :estate_id, :person_id, :person_estate_status_id, :part]
 
   menu label: "Люди"
   index title: "Люди"
@@ -41,17 +41,17 @@ ActiveAdmin.register Person do
       end
     end
 
-    f.inputs "Помещение" do
-      f.has_many :estates do |estate|
-        estate.input :name, label: "Имя помещения"
-        estate.input :estate_type, label: "Тип"
-        estate.input :floor, label: "Этаж"
-        estate.input :rooms, label: "Кол-во комнат"
-        estate.input :total_area, label: "Общая площадь"
-        estate.input :living_area, label: "Жилая площадь"
-        estate.input :regnum, label: "Гос.рег номер помещения"
-      end
-    end
+    # f.inputs "Помещение" do
+    #   f.has_many :estates do |estate|
+    #     estate.input :name, label: "Имя помещения"
+    #     estate.input :estate_type, label: "Тип"
+    #     estate.input :floor, label: "Этаж"
+    #     estate.input :rooms, label: "Кол-во комнат"
+    #     estate.input :total_area, label: "Общая площадь"
+    #     estate.input :living_area, label: "Жилая площадь"
+    #     estate.input :regnum, label: "Гос.рег номер помещения"
+    #   end
+    # end
 
     f.actions
   end
