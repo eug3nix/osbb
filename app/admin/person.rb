@@ -67,15 +67,18 @@ ActiveAdmin.register Person do
       row ('Получать уведомления') {person.notifiable}
     end
     panel "Помещения человека" do
-      table_for(person.estates) do
-        column("Estate", sortable: :id) do |est|
-          link_to "#{est.id}", admin_estate_path(est)
+      table_for(person.person_estates) do
+        column("Estate", sortable: :id) do |pes|
+          link_to "#{pes.estate_id}", admin_estate_path(pes.estate_id)
         end
-        column("Name") do |est|
-          "#{est.name}"
+        column("Name") do |pes|
+          "#{pes.estate.name}"
         end
-        column("Type") do |est|
-          "#{est.estate_type.name}"
+        column("Type") do |pes|
+          "#{pes.estate.estate_type.name}"
+        end
+        column("Status") do |pes|
+          "#{pes.person_estate_status.name}"
         end
       end
     end
