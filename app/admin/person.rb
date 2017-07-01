@@ -12,8 +12,10 @@ ActiveAdmin.register Person do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part, :birthdate,
-                :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status], person_estsates_attributes: [:person_estate_status]
+  permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part,
+                :birthdate, :move_in_date, :notifiable,
+                estates_attributes:[:name], person_estsate_attributes: [:person_estate_status],
+                person_estates_attributes: [:estate_id, :person_id, :person_estate_status_id, :part]
 
   menu label: "Люди"
   index title: "Люди"
