@@ -12,8 +12,10 @@ ActiveAdmin.register Person do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part, :birthdate,
-                :move_in_date, estates_attributes:[:name], person_estsate_attributes: [:person_estate_status]
+  permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part,
+                :birthdate, :move_in_date, :notifiable,
+                estates_attributes:[:name], person_estsate_attributes: [:person_estate_status],
+                person_estates_attributes: [:id, :estate_id, :person_id, :person_estate_status_id, :part]
 
   menu label: "Люди"
   index title: "Люди"
@@ -31,18 +33,25 @@ ActiveAdmin.register Person do
       f.input :notifiable, label: 'Получать уведомления'
     end
 
-    f.inputs "Помещение" do
-      f.has_many :estates do |estate|
-        estate.input :name, label: "Имя помещения"
-        estate.input :estate_type, label: "Тип"
-        estate.input :floor, label: "Этаж"
-        estate.input :rooms, label: "Кол-во комнат"
-        estate.input :total_area, label: "Общая площадь"
-        estate.input :living_area, label: "Жилая площадь"
-        estate.input :regnum, label: "Гос.рег номер помещения"
-
+    f.inputs "Люди-Помещения" do
+      f.has_many :person_estates do |pes|
+        pes.input :estate, label: "Помещение"
+        pes.input :person_estate_status, label: "Статус"
+        pes.input :part, label: "Часть собственности"
       end
     end
+
+    # f.inputs "Помещение" do
+    #   f.has_many :estates do |estate|
+    #     estate.input :name, label: "Имя помещения"
+    #     estate.input :estate_type, label: "Тип"
+    #     estate.input :floor, label: "Этаж"
+    #     estate.input :rooms, label: "Кол-во комнат"
+    #     estate.input :total_area, label: "Общая площадь"
+    #     estate.input :living_area, label: "Жилая площадь"
+    #     estate.input :regnum, label: "Гос.рег номер помещения"
+    #   end
+    # end
 
     f.actions
   end
@@ -58,15 +67,18 @@ ActiveAdmin.register Person do
       row ('Получать уведомления') {person.notifiable}
     end
     panel "Помещения человека" do
-      table_for(person.estates) do
-        column("Estate", sortable: :id) do |est|
-          link_to "#{est.id}", admin_estate_path(est)
+      table_for(person.person_estates) do
+        column("Estate", sortable: :id) do |pes|
+          link_to "#{pes.estate_id}", admin_estate_path(pes.estate_id)
         end
-        column("Name") do |est|
-          "#{est.name}"
+        column("Name") do |pes|
+          "#{pes.estate.name}"
         end
-        column("Type") do |est|
-          "#{est.estate_type.name}"
+        column("Type") do |pes|
+          "#{pes.estate.estate_type.name}"
+        end
+        column("Status") do |pes|
+          "#{pes.person_estate_status.name}"
         end
       end
     end
