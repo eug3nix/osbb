@@ -13,8 +13,23 @@ ActiveAdmin.register Estate do
 #   permitted
 # end
   permit_params :name, :floor, :rooms, :total_area, :living_area, :regnum, :estate_type_id
+  includes :estate_type
   menu label: "Помещения"
-  index title: "Помещения"
+
+  index title: 'Помещения' do
+    # selectable_column
+    column "Имя", :name
+    column "Тип", :type
+    column "Этаж", :floor
+    column "Комнат", :rooms
+    column "Общая площадь", :total_area
+    column "Жилая площадь", :living_area
+    column "Гос. рег. номер", :regnum
+    actions
+  end
+
+
+
 
   show title: :name do
 
@@ -25,7 +40,7 @@ ActiveAdmin.register Estate do
       row ('Комнат') {estate.rooms}
       row ('Общая площадь') {estate.total_area}
       row ('Жилая площадь') {estate.living_area}
-      row ('Гос. рег. номер объекта') {estate.living_area}
+      row ('Гос. рег. номер объекта') {estate.regnum}
     end
 
     panel "Люди" do
