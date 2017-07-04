@@ -6,4 +6,8 @@ class Estate < ActiveRecord::Base
   def type
   	self.estate_type.name
   end
+
+  def estate_title
+  	"#{self.type} - #{self.name}"
+  end
 end

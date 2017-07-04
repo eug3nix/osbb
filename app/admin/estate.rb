@@ -31,7 +31,7 @@ ActiveAdmin.register Estate do
 
 
 
-  show title: :name do
+  show title: :estate_title do
 
     attributes_table do
       row ('Имя') {estate.name}
