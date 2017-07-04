@@ -34,8 +34,8 @@ ActiveAdmin.register Estate do
   show title: :estate_title do
 
     attributes_table do
-      row ('Имя') {estate.name}
       row ('Тип') {estate.estate_type.name}
+      row ('Имя') {estate.name}
       row ('Этаж') {estate.floor}
       row ('Комнат') {estate.rooms}
       row ('Общая площадь') {estate.total_area}
