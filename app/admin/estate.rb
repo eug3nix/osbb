@@ -13,19 +13,34 @@ ActiveAdmin.register Estate do
 #   permitted
 # end
   permit_params :name, :floor, :rooms, :total_area, :living_area, :regnum, :estate_type_id
+  includes :estate_type
   menu label: "Помещения"
-  index title: "Помещения"
 
-  show title: :name do
+  index title: 'Помещения' do
+    # selectable_column
+    column "Имя", :name
+    column "Тип", :type
+    column "Этаж", :floor
+    column "Комнат", :rooms
+    column "Общая площадь", :total_area
+    column "Жилая площадь", :living_area
+    column "Гос. рег. номер", :regnum
+    actions
+  end
+
+
+
+
+  show title: :estate_title do
 
     attributes_table do
-      row ('Имя') {estate.name}
       row ('Тип') {estate.estate_type.name}
+      row ('Имя') {estate.name}
       row ('Этаж') {estate.floor}
       row ('Комнат') {estate.rooms}
       row ('Общая площадь') {estate.total_area}
       row ('Жилая площадь') {estate.living_area}
-      row ('Гос. рег. номер объекта') {estate.living_area}
+      row ('Гос. рег. номер объекта') {estate.regnum}
     end
 
     panel "Люди" do
@@ -35,7 +50,7 @@ ActiveAdmin.register Estate do
         end
 
         column "Человек" do |pes|
-            pes.person.name
+            pes.person.fullname
         end
 
         column "Статус" do |pes|

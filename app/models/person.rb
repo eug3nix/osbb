@@ -5,8 +5,8 @@ class Person < ActiveRecord::Base
 
   accepts_nested_attributes_for :estates, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :person_estates, allow_destroy: true, reject_if: :all_blank
-  def name
-    "#{lastname} #{firstname}"
+  def fullname
+    "#{lastname} #{firstname} #{middlename}"
   end
 
 end

@@ -33,13 +33,13 @@ ActiveAdmin.register Person do
       f.input :notifiable, label: 'Получать уведомления'
     end
 
-    f.inputs "Люди-Помещения" do
-      f.has_many :person_estates do |pes|
-        pes.input :estate, label: "Помещение"
-        pes.input :person_estate_status, label: "Статус"
-        pes.input :part, label: "Часть собственности"
-      end
-    end
+    # f.inputs "Люди-Помещения" do
+    #   f.has_many :person_estates do |pes|
+    #     pes.input :estate, label: "Помещение"
+    #     pes.input :person_estate_status, label: "Статус"
+    #     pes.input :part, label: "Часть собственности"
+    #   end
+    # end
 
     # f.inputs "Помещение" do
     #   f.has_many :estates do |estate|
