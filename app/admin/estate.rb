@@ -50,7 +50,7 @@ ActiveAdmin.register Estate do
         end
 
         column "Человек" do |pes|
-            pes.person.name
+            pes.person.fullname
         end
 
         column "Статус" do |pes|
