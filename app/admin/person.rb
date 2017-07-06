@@ -56,7 +56,7 @@ ActiveAdmin.register Person do
     f.actions
   end
 
-  show title: :name do
+  show title: :fullname do
     attributes_table do
       row ('Фамилия') {person.lastname}
       row ('Имя') {person.firstname}
