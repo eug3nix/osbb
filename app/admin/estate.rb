@@ -28,10 +28,7 @@ ActiveAdmin.register Estate do
     actions
   end
 
-
-
-
-  show title: :estate_title do
+  show title: :estate_title do |est|
 
     attributes_table do
       row ('Тип') {estate.estate_type.name}
@@ -45,12 +42,8 @@ ActiveAdmin.register Estate do
 
     panel "Люди" do
       table_for(estate.person_estates) do |pes|
-        column("Привязка", sortable: :id) do |pes|
-          link_to "#{pes.id}", admin_person_estate_path(pes)
-        end
-
         column "Человек" do |pes|
-            pes.person.fullname
+            link_to pes.person.fullname, admin_person_path(pes.person)
         end
 
         column "Статус" do |pes|
@@ -69,8 +62,17 @@ ActiveAdmin.register Estate do
             pes.regdate
         end
 
+        column("Привязка", sortable: :id) do |pes|
+          link_to "#{pes.id}", admin_person_estate_path(pes)
+        end
+
+        tr class: "action_items" do
+          td link_to("Добавить Человека", new_admin_estate_person_estate_path(estate_id: estate.id), class: :button)
+        end
+
       end
     end
+
     active_admin_comments
   end
 end

@@ -12,24 +12,43 @@ ActiveAdmin.register PersonEstate do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part
 
-  menu label: "Помещения-Люди"
+  belongs_to :estate, optional: true
+  permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part, :estate_id,
+                person_attributes:[:lastname, :firstname, :middlename, :inn, :regnum, :regdate, :birthdate, :move_in_date, :notifiable]
+
+  # menu label: "Помещения-Люди"
   index title: "Помещения-Люди"
-  # show do |pes|
-  #  "#{pes.person.name} - #{pes.estate.name}"
-  # end
 
   form do |f|
-    f.inputs "PersonEstate" do
-      f.input :estate, label: 'Помещение'
-      f.input :person, label: 'Человек'
+    f.inputs "Человек", for: [:person, Person.new] do |person|
+      person.input :lastname, label: 'Фамилия'
+      person.input :firstname, label: 'Имя'
+      person.input :middlename, label: 'Отчество'
+      person.input :inn, label: 'ИНН'
+      person.input :regnum
+      person.input :regdate, label: 'Дата регистрации', start_year: 2010
+      person.input :birthdate, label: 'Дата рождения', start_year: 1940
+      person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+      person.input :notifiable, label: 'Получать уведомления'
+    end
+
+    f.inputs "Привязка" do
+      f.input :estate, label: 'Помещение', input_html: { disabled: true }
       f.input :person_estate_status, label: 'Статус'
       f.input :part, label: 'Часть собственности'
       f.input :regno, label: 'Гос.рег. номер'
       f.input :regdate, label: 'Дата регистрации права собственности', start_year: 2015, end_year: 2020
     end
+
     f.actions
   end
-  
+
+  controller do
+    def create
+      create! do |format|
+        format.html {redirect_to admin_estate_path(resource.estate)}
+      end
+    end
+  end
 end

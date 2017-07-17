@@ -33,11 +33,13 @@ ActiveAdmin.register Person do
       f.input :notifiable, label: 'Получать уведомления'
     end
 
-    # f.inputs "Люди-Помещения" do
-    #   f.has_many :person_estates do |pes|
-    #     pes.input :estate, label: "Помещение"
-    #     pes.input :person_estate_status, label: "Статус"
-    #     pes.input :part, label: "Часть собственности"
+    # if f.object.new_record? 
+    #   f.inputs "Привязка" do
+    #     f.has_many :person_estates do |pes|
+    #       pes.input :estate, label: "Помещение"
+    #       pes.input :person_estate_status, label: "Статус"
+    #       pes.input :part, label: "Часть собственности"
+    #     end
     #   end
     # end
 
@@ -66,6 +68,7 @@ ActiveAdmin.register Person do
       row ('Дата въезда') {person.move_in_date}
       row ('Получать уведомления') {person.notifiable}
     end
+
     panel "Помещения человека" do
       table_for(person.person_estates) do
         column("Estate", sortable: :id) do |pes|
@@ -82,6 +85,29 @@ ActiveAdmin.register Person do
         end
       end
     end
+
+    panel "Контакты" do
+      table_for(person.contacts) do
+        column("Contact", sortable: :id) do |ct|
+          link_to "#{ct.id}", admin_person_contact_path(person, ct)
+        end
+        column("Value") do |ct|
+          "#{ct.value}"
+        end
+        column("Type") do |ct|
+          "#{ct.contact_type.name}"
+        end
+        column("Private") do |ct|
+          "#{ct.private}"
+        end
+
+        tr class: "action_items" do
+          td link_to("Добавить Контакт", new_admin_person_contact_path(person), class: :button)
+        end
+      end
+    end
+
+
     active_admin_comments
   end
 
