@@ -43,9 +43,9 @@ ActiveAdmin.register Person do
       f.input :middlename, label: 'Отчество'
       f.input :inn, label: 'ИНН'
       f.input :regnum
-      f.input :regdate, label: 'Дата регистрации', start_year: 2010
-      f.input :birthdate, label: 'Дата рождения', start_year: 1940
-      f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+      f.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+      f.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
+      f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
       f.input :notifiable, label: 'Получать уведомления'
     end
 

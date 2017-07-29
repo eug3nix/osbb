@@ -33,9 +33,9 @@ ActiveAdmin.register PersonEstate do
       person.input :middlename, label: 'Отчество'
       person.input :inn, label: 'ИНН'
       person.input :regnum
-      person.input :regdate, label: 'Дата регистрации', start_year: 2010
-      person.input :birthdate, label: 'Дата рождения', start_year: 1940
-      person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+      person.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+      person.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
+      person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
       person.input :notifiable, label: 'Получать уведомления'
     end
 
@@ -44,7 +44,7 @@ ActiveAdmin.register PersonEstate do
       f.input :person_estate_status, label: 'Статус'
       f.input :part, label: 'Часть собственности'
       f.input :regno, label: 'Гос.рег. номер'
-      f.input :regdate, label: 'Дата регистрации права собственности', start_year: 2015, end_year: 2020
+      f.input :regdate, label: 'Дата регистрации права собственности', start_year: 2015, end_year: 2020, order: [:day, :month, :year]
     end
 
     f.actions
