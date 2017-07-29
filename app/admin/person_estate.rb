@@ -17,8 +17,14 @@ ActiveAdmin.register PersonEstate do
   permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part, :estate_id,
                 person_attributes:[:lastname, :firstname, :middlename, :inn, :regnum, :regdate, :birthdate, :move_in_date, :notifiable]
 
-  # menu label: "Помещения-Люди"
-  index title: "Помещения-Люди"
+  menu false
+  # menu label: "Привязки"
+  # index title: "Привязки" do
+  #   column "Имя", :name
+  #   column "Создан", :created_at
+  #   column "Изменен", :updated_at
+  #   actions
+  # end
 
   form do |f|
     f.inputs "Человек", for: [:person, Person.new] do |person|

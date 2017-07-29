@@ -15,6 +15,11 @@ ActiveAdmin.register EstateType do
   permit_params :name
 
   menu label: "Типы помещений"
-  index title: "Типы помещений"
+  index title: "Типы помещений" do
+    column "Имя", :name
+    column "Создан", :created_at
+    column "Изменен", :updated_at
+    actions
+  end
 
 end
