@@ -18,8 +18,8 @@ ActiveAdmin.register Estate do
 
   index title: 'Помещения' do
     # selectable_column
-    column "Имя", :name
     column "Тип", :type
+    column "Имя", :name
     column "Этаж", :floor
     column "Комнат", :rooms
     column "Общая площадь", :total_area
