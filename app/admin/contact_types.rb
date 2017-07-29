@@ -15,6 +15,11 @@ ActiveAdmin.register ContactType do
   permit_params :name
 
   menu label: "Типы контактов"
-  index title: "Типы контактов"
+  index title: "Типы контактов" do
+    column "Имя", :name
+    column "Создан", :created_at
+    column "Изменен", :updated_at
+    actions
+  end
 
 end

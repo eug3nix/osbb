@@ -13,7 +13,12 @@ ActiveAdmin.register PersonEstateStatus do
 #   permitted
 # end
 	menu label: "Статусы людей"
-	index title: "Статусы людей"
+  index title: "Статусы людей" do
+    column "Имя", :name
+    column "Создан", :created_at
+    column "Изменен", :updated_at
+    actions
+  end
   permit_params :name
 
 end

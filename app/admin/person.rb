@@ -18,7 +18,23 @@ ActiveAdmin.register Person do
                 person_estates_attributes: [:id, :estate_id, :person_id, :person_estate_status_id, :part]
 
   menu label: "Люди"
-  index title: "Люди"
+  index title: "Люди" do
+    # selectable_column
+    column "Фамилия", :lastname
+    column "Имя", :firstname
+    column "Отчество", :middlename
+    column "ИНН", :inn
+    column "Дата рождения", :birthdate
+    column "Уведомлять?", :notifiable
+    column "Дата въезда", :move_in_date
+    column "Создан", :created_at
+    column "Изменен", :updated_at
+    # column "Гос. рег. номер", :regnum
+    # column "Дата регистрации", :total_area
+    # column "Жилая площадь", :living_area
+    # column "Гос. рег. номер", :regnum
+    actions
+  end
 
   form do |f|
     f.inputs "Человек" do
@@ -27,9 +43,9 @@ ActiveAdmin.register Person do
       f.input :middlename, label: 'Отчество'
       f.input :inn, label: 'ИНН'
       f.input :regnum
-      f.input :regdate, label: 'Дата регистрации', start_year: 2010
-      f.input :birthdate, label: 'Дата рождения', start_year: 1940
-      f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017
+      f.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+      f.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
+      f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
       f.input :notifiable, label: 'Получать уведомления'
     end
 
