@@ -12,7 +12,7 @@ ActiveAdmin.register Person do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :firstname, :lastname, :middlename, :inn, :regnum, :regdate, :property_part,
+  permit_params :firstname, :lastname, :middlename, :inn,
                 :birthdate, :move_in_date, :notifiable,
                 estates_attributes:[:name], person_estsate_attributes: [:person_estate_status],
                 person_estates_attributes: [:id, :estate_id, :person_id, :person_estate_status_id, :part]
@@ -42,8 +42,8 @@ ActiveAdmin.register Person do
       f.input :firstname, label: 'Имя'
       f.input :middlename, label: 'Отчество'
       f.input :inn, label: 'ИНН'
-      f.input :regnum
-      f.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+#      f.input :regnum
+#      f.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
       f.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
       f.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
       f.input :notifiable, label: 'Получать уведомления'

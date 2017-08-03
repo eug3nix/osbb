@@ -18,7 +18,7 @@ class PeopleControllerTest < ActionController::TestCase
 
   test "should create person" do
     assert_difference('Person.count') do
-      post :create, person: { birthdate: @person.birthdate, firstname: @person.firstname, inn: @person.inn, lastname: @person.lastname, middlename: @person.middlename, move_in_date: @person.move_in_date, notifiable: @person.notifiable, property_part: @person.property_part, regdate: @person.regdate, regnum: @person.regnum, type_id: @person.type_id }
+      post :create, person: { birthdate: @person.birthdate, firstname: @person.firstname, inn: @person.inn, lastname: @person.lastname, middlename: @person.middlename, move_in_date: @person.move_in_date, notifiable: @person.notifiable, type_id: @person.type_id }
     end
 
     assert_redirected_to person_path(assigns(:person))
@@ -35,7 +35,7 @@ class PeopleControllerTest < ActionController::TestCase
   end
 
   test "should update person" do
-    patch :update, id: @person, person: { birthdate: @person.birthdate, firstname: @person.firstname, inn: @person.inn, lastname: @person.lastname, middlename: @person.middlename, move_in_date: @person.move_in_date, notifiable: @person.notifiable, property_part: @person.property_part, regdate: @person.regdate, regnum: @person.regnum, type_id: @person.type_id }
+    patch :update, id: @person, person: { birthdate: @person.birthdate, firstname: @person.firstname, inn: @person.inn, lastname: @person.lastname, middlename: @person.middlename, move_in_date: @person.move_in_date, notifiable: @person.notifiable, type_id: @person.type_id }
     assert_redirected_to person_path(assigns(:person))
   end
 

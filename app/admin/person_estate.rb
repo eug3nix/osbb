@@ -15,7 +15,7 @@ ActiveAdmin.register PersonEstate do
 
   belongs_to :estate, optional: true
   permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part, :estate_id,
-                person_attributes:[:lastname, :firstname, :middlename, :inn, :regnum, :regdate, :birthdate, :move_in_date, :notifiable]
+                person_attributes:[:lastname, :firstname, :middlename, :inn, :birthdate, :move_in_date, :notifiable]
 
   menu false
   # menu label: "Привязки"
@@ -32,8 +32,8 @@ ActiveAdmin.register PersonEstate do
       person.input :firstname, label: 'Имя'
       person.input :middlename, label: 'Отчество'
       person.input :inn, label: 'ИНН'
-      person.input :regnum
-      person.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+#      person.input :regnum
+#      person.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
       person.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
       person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
       person.input :notifiable, label: 'Получать уведомления'
