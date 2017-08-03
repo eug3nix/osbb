@@ -87,14 +87,15 @@ ActiveAdmin.register Person do
 
     panel "Помещения человека" do
       table_for(person.person_estates) do
-        column("Estate", sortable: :id) do |pes|
-          link_to "#{pes.estate_id}", admin_estate_path(pes.estate_id)
-        end
-        column("Name") do |pes|
-          "#{pes.estate.name}"
-        end
-        column("Type") do |pes|
+#        column("Estate", sortable: :id) do |pes|
+#         link_to "#{pes.estate_id}", admin_estate_path(pes.estate_id)
+ #  end
+         column("Type") do |pes|
           "#{pes.estate.estate_type.name}"
+        end
+
+        column("Name") do |pes|
+          link_to "#{pes.estate.name}", admin_estate_path(pes.estate_id)
         end
         column("Status") do |pes|
           "#{pes.person_estate_status.name}"
@@ -104,14 +105,14 @@ ActiveAdmin.register Person do
 
     panel "Контакты" do
       table_for(person.contacts) do
-        column("Contact", sortable: :id) do |ct|
-          link_to "#{ct.id}", admin_person_contact_path(person, ct)
-        end
-        column("Value") do |ct|
-          "#{ct.value}"
-        end
+#        column("Contact", sortable: :id) do |ct|
+ #         link_to "#{ct.id}", admin_person_contact_path(person, ct)
+  #      end
         column("Type") do |ct|
           "#{ct.contact_type.name}"
+        end
+        column("Value") do |ct|
+		link_to "#{ct.value}", admin_person_contact_path(person, ct)
         end
         column("Private") do |ct|
           "#{ct.private}"
