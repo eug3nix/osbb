@@ -62,8 +62,16 @@ ActiveAdmin.register Estate do
             pes.regdate
         end
 
-        column("Привязка", sortable: :id) do |pes|
-          link_to "#{pes.id}", admin_person_estate_path(pes)
+        column("") do |pes|
+          link_to "View", admin_person_estate_path(pes)
+        end
+
+        column("") do |pes|
+          link_to "Edit", edit_admin_person_estate_path(pes)
+        end
+
+        column("") do |pes|
+          link_to "Delete", admin_person_estate_path(pes), :method => :delete
         end
 
         tr class: "action_items" do

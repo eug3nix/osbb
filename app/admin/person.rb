@@ -100,6 +100,19 @@ ActiveAdmin.register Person do
         column("Status") do |pes|
           "#{pes.person_estate_status.name}"
         end
+
+        column("") do |pes|
+          link_to "View", admin_person_estate_path(pes)
+        end
+
+        column("") do |pes|
+          link_to "Edit", edit_admin_person_estate_path(pes)
+        end
+
+        column("") do |pes|
+          link_to "Delete", admin_person_estate_path(pes), :method => :delete
+        end
+
       end
     end
 
@@ -118,9 +131,22 @@ ActiveAdmin.register Person do
           "#{ct.private}"
         end
 
+        column("") do |ct|
+          link_to "View", admin_person_contact_path(person, ct)
+        end
+
+        column("") do |ct|
+          link_to "Edit", edit_admin_person_contact_path(person, ct)
+        end
+
+        column("") do |ct|
+          link_to "Delete", admin_person_contact_path(person, ct), :method => :delete
+        end
+
         tr class: "action_items" do
           td link_to("Добавить Контакт", new_admin_person_contact_path(person), class: :button)
         end
+		
       end
     end
 
