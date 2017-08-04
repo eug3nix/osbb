@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804172300) do
+ActiveRecord::Schema.define(version: 20170804172806) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170804172300) do
     t.integer  "estate_type_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "section"
   end
 
   add_index "estates", ["estate_type_id"], name: "index_estates_on_estate_type_id"

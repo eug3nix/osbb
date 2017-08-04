@@ -12,7 +12,7 @@ ActiveAdmin.register Estate do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :name, :floor, :rooms, :total_area, :living_area, :regnum, :estate_type_id
+  permit_params :name, :section, :floor, :rooms, :total_area, :living_area, :regnum, :estate_type_id
   includes :estate_type
   menu label: "Помещения"
 
@@ -20,6 +20,7 @@ ActiveAdmin.register Estate do
     # selectable_column
     column "Тип", :type
     column "Имя", :name
+    column "Секция", :section
     column "Этаж", :floor
     column "Комнат", :rooms
     column "Общая площадь", :total_area
@@ -33,6 +34,7 @@ ActiveAdmin.register Estate do
     attributes_table do
       row ('Тип') {estate.estate_type.name}
       row ('Имя') {estate.name}
+      row ('Секция') {estate.section}
       row ('Этаж') {estate.floor}
       row ('Комнат') {estate.rooms}
       row ('Общая площадь') {estate.total_area}

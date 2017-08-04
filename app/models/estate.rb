@@ -6,6 +6,7 @@ class Estate < ActiveRecord::Base
   validates :floor, numericality: { only_integer: true }, allow_nil: true
   validates :rooms, numericality: { only_integer: true }, allow_nil: true
   validates :regnum, numericality: { only_integer: true }, allow_blank: true
+  validates :section, inclusion: 1..2, allow_blank: true
   validates :total_area, numericality: true, allow_nil: true
   validates :living_area, numericality: true, allow_nil: true
 
