@@ -41,6 +41,7 @@ ActiveAdmin.register PersonEstate do
 
     f.inputs "Привязка" do
       f.input :estate, label: 'Помещение', input_html: { disabled: true }
+      f.input :person, label: 'Человек'
       f.input :person_estate_status, label: 'Статус'
       f.input :part, label: 'Часть собственности'
       f.input :regno, label: 'Гос.рег. номер'
