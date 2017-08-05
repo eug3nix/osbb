@@ -90,27 +90,27 @@ ActiveAdmin.register Person do
 #        column("Estate", sortable: :id) do |pes|
 #         link_to "#{pes.estate_id}", admin_estate_path(pes.estate_id)
  #  end
-         column("Type") do |pes|
+         column("Тип") do |pes|
           "#{pes.estate.estate_type.name}"
         end
 
-        column("Name") do |pes|
+        column("Имя") do |pes|
           link_to "#{pes.estate.name}", admin_estate_path(pes.estate_id)
         end
-        column("Status") do |pes|
+        column("Статус") do |pes|
           "#{pes.person_estate_status.name}"
         end
 
         column("") do |pes|
-          link_to "View", admin_person_estate_path(pes)
+          link_to "Просмотр", admin_person_estate_path(pes)
         end
 
         column("") do |pes|
-          link_to "Edit", edit_admin_person_estate_path(pes)
+          link_to "Редактировать", edit_admin_person_estate_path(pes)
         end
 
         column("") do |pes|
-          link_to "Delete", admin_person_estate_path(pes), :method => :delete
+          link_to "Отвязать помещение", admin_person_estate_path(pes), :method => :delete, data: { confirm: 'Вы уверены?' }
         end
 
       end
@@ -121,26 +121,26 @@ ActiveAdmin.register Person do
 #        column("Contact", sortable: :id) do |ct|
  #         link_to "#{ct.id}", admin_person_contact_path(person, ct)
   #      end
-        column("Type") do |ct|
+        column("Тип") do |ct|
           "#{ct.contact_type.name}"
         end
-        column("Value") do |ct|
+        column("Значение") do |ct|
 		link_to "#{ct.value}", admin_person_contact_path(person, ct)
         end
-        column("Private") do |ct|
+        column("Приватность") do |ct|
           "#{ct.private}"
         end
 
         column("") do |ct|
-          link_to "View", admin_person_contact_path(person, ct)
+          link_to "Просмотр", admin_person_contact_path(person, ct)
         end
 
         column("") do |ct|
-          link_to "Edit", edit_admin_person_contact_path(person, ct)
+          link_to "Редактировать", edit_admin_person_contact_path(person, ct)
         end
 
         column("") do |ct|
-          link_to "Delete", admin_person_contact_path(person, ct), :method => :delete
+          link_to "Удалить", admin_person_contact_path(person, ct), :method => :delete, data: { confirm: 'Are you sure?' }
         end
 
         tr class: "action_items" do

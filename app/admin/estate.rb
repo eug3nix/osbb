@@ -65,15 +65,15 @@ ActiveAdmin.register Estate do
         end
 
         column("") do |pes|
-          link_to "View", admin_person_estate_path(pes)
+          link_to "Просмотр", admin_person_estate_path(pes)
         end
 
         column("") do |pes|
-          link_to "Edit", edit_admin_person_estate_path(pes)
+          link_to "Редактировать", edit_admin_person_estate_path(pes)
         end
 
         column("") do |pes|
-          link_to "Delete", admin_person_estate_path(pes), :method => :delete
+          link_to "Отвязать человека", admin_person_estate_path(pes), method: :delete, data: { confirm: 'Вы уверены?' }
         end
 
         tr class: "action_items" do
