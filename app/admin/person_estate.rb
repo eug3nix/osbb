@@ -27,21 +27,23 @@ ActiveAdmin.register PersonEstate do
   # end
 
   form do |f|
-    f.inputs "Человек", for: [:person, Person.new] do |person|
-      person.input :lastname, label: 'Фамилия'
-      person.input :firstname, label: 'Имя'
-      person.input :middlename, label: 'Отчество'
-      person.input :inn, label: 'ИНН'
-#      person.input :regnum
-#      person.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
-      person.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
-      person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
-      person.input :notifiable, label: 'Получать уведомления'
+    if f.object.new_record? 
+      f.inputs "Человек", for: [:person, Person.new] do |person|
+        person.input :lastname, label: 'Фамилия'
+        person.input :firstname, label: 'Имя'
+        person.input :middlename, label: 'Отчество'
+        person.input :inn, label: 'ИНН'
+  #      person.input :regnum
+  #      person.input :regdate, label: 'Дата регистрации', start_year: 2010, order: [:day, :month, :year]
+        person.input :birthdate, label: 'Дата рождения', start_year: 1940, order: [:day, :month, :year]
+        person.input :move_in_date, label: 'Дата въезда(предпол.)', start_year: 2017, order: [:day, :month, :year]
+        person.input :notifiable, label: 'Получать уведомления'
+      end
     end
 
     f.inputs "Привязка" do
       f.input :estate, label: 'Помещение', input_html: { disabled: true }
-      f.input :person, label: 'Человек'
+      f.input :person, label: 'Человек' unless f.object.new_record? 
       f.input :person_estate_status, label: 'Статус'
       f.input :part, label: 'Часть собственности'
       f.input :regno, label: 'Гос.рег. номер'
