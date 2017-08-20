@@ -43,7 +43,7 @@ ActiveAdmin.register Estate do
     end
 
     panel "Люди" do
-      table_for(estate.person_estates) do |pes|
+      table_for(estate.person_estates.joins(:person).order('people.lastname')) do |pes|
         column "Человек" do |pes|
             link_to pes.person.fullname, admin_person_path(pes.person)
         end
