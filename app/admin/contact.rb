@@ -13,7 +13,17 @@ ActiveAdmin.register Contact do
 #   permitted
 # end
   permit_params :person_id, :contact_type_id, :value, :private
-  belongs_to :person
+  belongs_to :person, optional: true
+
+  menu label: "Контакты"
+  index title: "Контакты" do
+    column "Значение", :value
+    column "Приватный", :private
+    column "Тип", :contact_type
+    column "Создан", :created_at
+    column "Изменен", :updated_at
+    actions
+  end
 
   controller do
     def create

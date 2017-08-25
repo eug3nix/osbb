@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804172806) do
+ActiveRecord::Schema.define(version: 20170820093142) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20170804172806) do
     t.integer  "person_id",                       null: false
     t.string   "value",                           null: false
     t.boolean  "private",         default: false
-    t.integer  "type_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "contact_type_id"
@@ -64,7 +63,6 @@ ActiveRecord::Schema.define(version: 20170804172806) do
 
   add_index "contacts", ["contact_type_id"], name: "index_contacts_on_contact_type_id"
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id"
-  add_index "contacts", ["type_id"], name: "index_contacts_on_type_id"
 
   create_table "estate_types", force: :cascade do |t|
     t.string   "name"

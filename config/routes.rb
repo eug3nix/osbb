@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :person_notes
-  resources :contact_types
-  resources :estate_types
-  resources :estates
-  resources :contacts
-  resources :persons
+  # resources :person_notes
+  # resources :contact_types
+  # resources :estate_types
+  # resources :estates
+  # resources :contacts
+  # resources :persons
   root :to => redirect('/admin/')
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
