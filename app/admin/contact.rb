@@ -25,6 +25,16 @@ ActiveAdmin.register Contact do
     actions
   end
 
+  form do |f|
+    f.inputs "Контакт" do
+      f.input :person, label: 'Человек', collection: Person.all.order(:lastname)# unless f.object.new_record? 
+      f.input :contact_type, label: 'Тип'
+      f.input :value, label: 'Значение'
+    end
+
+    f.actions
+  end
+
   controller do
     def create
       create! do |format|
