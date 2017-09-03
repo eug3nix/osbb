@@ -4,6 +4,8 @@ class Person < ActiveRecord::Base
   has_many :estates, through: :person_estates
   has_many :contacts
 
+  validates :person_type, presence: true
+
   accepts_nested_attributes_for :estates, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :person_estates, allow_destroy: true, reject_if: :all_blank
   accepts_nested_attributes_for :contacts, allow_destroy: true, reject_if: :all_blank

@@ -4,6 +4,8 @@ class Estate < ActiveRecord::Base
   has_many :persons, through: :person_estates
   has_many :payments
 
+  validates :estate_type, presence: true
+
   validates :floor, numericality: { only_integer: true }, allow_nil: true
   validates :rooms, numericality: { only_integer: true }, allow_nil: true
   validates :regnum, numericality: { only_integer: true }, allow_blank: true
