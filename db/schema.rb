@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820093142) do
+ActiveRecord::Schema.define(version: 20170903135008) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 20170820093142) do
   end
 
   add_index "estates", ["estate_type_id"], name: "index_estates_on_estate_type_id"
+
+  create_table "payments", force: :cascade do |t|
+    t.integer  "estate_id"
+    t.date     "pay_date"
+    t.decimal  "amount"
+    t.string   "payment_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "payments", ["estate_id"], name: "index_payments_on_estate_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "firstname",      null: false

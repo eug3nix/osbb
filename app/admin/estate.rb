@@ -83,6 +83,37 @@ ActiveAdmin.register Estate do
       end
     end
 
+    panel "Платежи" do
+      table_for(estate.payments) do |pay|
+        column "Сумма" do |pay|
+            pay.amount
+        end
+
+        column "Назначение платежа" do |pay|
+            pay.payment_type
+        end
+
+        column "Дата оплаты" do |pay|
+            pay.pay_date
+        end
+
+        column("") do |pay|
+          link_to "Просмотр", admin_payment_path(pay)
+        end
+
+        column("") do |pay|
+          link_to "Редактировать", edit_admin_payment_path(pay)
+        end
+
+        column("") do |pay|
+          link_to "Удалить Платеж", admin_payment_path(pay), method: :delete, data: { confirm: 'Вы уверены?' }
+        end
+
+        tr class: "action_items" do
+          td link_to("Добавить Платеж", new_admin_estate_payment_path(estate_id: estate.id), class: :button)
+        end
+      end
+    end
     active_admin_comments
   end
 end
