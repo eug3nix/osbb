@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903135008) do
+ActiveRecord::Schema.define(version: 20170903152715) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -97,19 +97,16 @@ ActiveRecord::Schema.define(version: 20170903135008) do
   add_index "payments", ["estate_id"], name: "index_payments_on_estate_id"
 
   create_table "people", force: :cascade do |t|
-    t.string   "firstname",      null: false
-    t.string   "lastname",       null: false
+    t.string   "firstname",    null: false
+    t.string   "lastname",     null: false
     t.string   "middlename"
     t.integer  "inn"
-    t.integer  "person_type_id"
     t.date     "birthdate"
     t.boolean  "notifiable"
     t.date     "move_in_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
-
-  add_index "people", ["person_type_id"], name: "index_people_on_person_type_id"
 
   create_table "person_estate_statuses", force: :cascade do |t|
     t.string   "name"
@@ -140,11 +137,5 @@ ActiveRecord::Schema.define(version: 20170903135008) do
   end
 
   add_index "person_notes", ["person_id"], name: "index_person_notes_on_person_id"
-
-  create_table "person_types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
 end
