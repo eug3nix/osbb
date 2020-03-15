@@ -114,6 +114,34 @@ ActiveAdmin.register Estate do
         end
       end
     end
+
+    panel "Транспортные средства" do
+      table_for(estate.cars) do |car|
+        column "Модель" do |car|
+            car.model
+        end
+
+        column "Рег Номер" do |car|
+            car.reg_number
+        end
+
+        column("") do |car|
+          link_to "Просмотр", admin_car_path(car)
+        end
+
+        column("") do |car|
+          link_to "Редактировать", edit_admin_car_path(car)
+        end
+
+        column("") do |car|
+          link_to "Удалить", admin_car_path, method: :delete, data: { confirm: 'Вы уверены?' }
+        end
+
+        tr class: "action_items" do
+          td link_to("Добавить Транспорт", new_admin_estate_car_path(estate_id: estate.id), class: :button)
+        end
+      end
+    end
     active_admin_comments
   end
 end

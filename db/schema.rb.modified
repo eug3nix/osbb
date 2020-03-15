@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200315194350) do
+ActiveRecord::Schema.define(version: 20170716165322) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 20200315194350) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "cars", force: :cascade do |t|
-    t.integer  "estate_id",  limit: 4
-    t.string   "model",      limit: 255
-    t.string   "reg_number", limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "cars", ["estate_id"], name: "index_cars_on_estate_id", using: :btree
-
   create_table "contact_types", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -66,6 +56,7 @@ ActiveRecord::Schema.define(version: 20200315194350) do
     t.integer  "person_id",       limit: 4,                   null: false
     t.string   "value",           limit: 255,                 null: false
     t.boolean  "private",                     default: false
+    t.integer  "type_id",         limit: 4
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "contact_type_id", limit: 4
@@ -73,6 +64,7 @@ ActiveRecord::Schema.define(version: 20200315194350) do
 
   add_index "contacts", ["contact_type_id"], name: "index_contacts_on_contact_type_id", using: :btree
   add_index "contacts", ["person_id"], name: "index_contacts_on_person_id", using: :btree
+  add_index "contacts", ["type_id"], name: "index_contacts_on_type_id", using: :btree
 
   create_table "estate_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -86,37 +78,31 @@ ActiveRecord::Schema.define(version: 20200315194350) do
     t.integer  "rooms",          limit: 4
     t.float    "total_area",     limit: 24
     t.float    "living_area",    limit: 24
-    t.integer  "regnum",         limit: 8
+    t.integer  "regnum",         limit: 4
     t.integer  "estate_type_id", limit: 4
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "section",        limit: 4
   end
 
   add_index "estates", ["estate_type_id"], name: "index_estates_on_estate_type_id", using: :btree
 
-  create_table "payments", force: :cascade do |t|
-    t.integer  "estate_id",    limit: 4
-    t.date     "pay_date"
-    t.decimal  "amount",                   precision: 10
-    t.string   "payment_type", limit: 255
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-  end
-
-  add_index "payments", ["estate_id"], name: "index_payments_on_estate_id", using: :btree
-
   create_table "people", force: :cascade do |t|
-    t.string   "firstname",    limit: 255, null: false
-    t.string   "lastname",     limit: 255, null: false
-    t.string   "middlename",   limit: 255
-    t.integer  "inn",          limit: 4
+    t.string   "firstname",      limit: 255, null: false
+    t.string   "lastname",       limit: 255, null: false
+    t.string   "middlename",     limit: 255
+    t.integer  "inn",            limit: 4
+    t.integer  "person_type_id", limit: 4
+    t.integer  "regnum",         limit: 4
+    t.datetime "regdate"
+    t.integer  "property_part",  limit: 4
     t.date     "birthdate"
     t.boolean  "notifiable"
     t.date     "move_in_date"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
+
+  add_index "people", ["person_type_id"], name: "index_people_on_person_type_id", using: :btree
 
   create_table "person_estate_statuses", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -148,7 +134,11 @@ ActiveRecord::Schema.define(version: 20200315194350) do
 
   add_index "person_notes", ["person_id"], name: "index_person_notes_on_person_id", using: :btree
 
-  add_foreign_key "cars", "estates"
+  create_table "person_types", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   add_foreign_key "contacts", "contact_types"
-  add_foreign_key "payments", "estates"
 end
