@@ -14,7 +14,7 @@ ActiveAdmin.register PersonEstate do
 # end
 
   belongs_to :estate, optional: true
-  permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :part, :estate_id,
+  permit_params :person_id, :estate_id, :person_estate_status_id, :regno, :regdate, :reg_reason, :part, :estate_id,
                 person_attributes:[:lastname, :firstname, :middlename, :inn, :birthdate, :move_in_date, :notifiable]
 
   menu false
@@ -47,6 +47,7 @@ ActiveAdmin.register PersonEstate do
       f.input :person_estate_status, label: 'Статус'
       f.input :part, label: 'Часть собственности'
       f.input :regno, label: 'Гос.рег. номер'
+      f.input :reg_reason, label: 'Причина права собственности'
       f.input :regdate, label: 'Дата регистрации права собственности', start_year: 2015, end_year: 2020, order: [:day, :month, :year]
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170903152715) do
+ActiveRecord::Schema.define(version: 20211101205526) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -71,15 +71,15 @@ ActiveRecord::Schema.define(version: 20170903152715) do
   end
 
   create_table "estates", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "name",                     null: false
     t.integer  "floor"
     t.integer  "rooms"
     t.float    "total_area"
     t.float    "living_area"
-    t.integer  "regnum",         limit: 16
+    t.integer  "regnum",         limit: 8
     t.integer  "estate_type_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "section"
   end
 
@@ -119,10 +119,11 @@ ActiveRecord::Schema.define(version: 20170903152715) do
     t.integer  "estate_id"
     t.integer  "regno"
     t.datetime "regdate"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "person_estate_status_id"
     t.float    "part"
+    t.string   "reg_reason",              limit: 300
   end
 
   add_index "person_estates", ["estate_id"], name: "index_person_estates_on_estate_id"
