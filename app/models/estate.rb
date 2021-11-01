@@ -3,6 +3,7 @@ class Estate < ActiveRecord::Base
   has_many :person_estates, dependent: :restrict_with_error
   has_many :persons, through: :person_estates
   has_many :payments
+  has_many :cars
 
   validates :estate_type, presence: true
 
